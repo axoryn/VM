@@ -1,0 +1,49 @@
+#!/bin/bash 
+
+cd /home/im4geeked
+mkdir tools
+cd tools/
+mkdir wordlist vpn 
+cd wordlist 
+mkdir vhost directory password username 
+cd vhost/ 
+wget https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Discovery/DNS/subdomains-top1million-5000.txt
+
+cd ..
+cd directory 
+sudo mv /usr/share/wordlists/dirb/common.txt . 
+sudo mv /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt . 
+wget https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Discovery/Web-Content/raft-medium-directories.txt
+
+cd .. 
+
+cd password
+sudo mv /usr/share/wordlists/rockyou.txt . 
+wget https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/xato-net-10-million-passwords.txt
+wget https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Passwords/Common-Credentials/best1050.txt
+
+cd ..
+cd username 
+wget https://raw.githubusercontent.com/danielmiessler/SecLists/refs/heads/master/Usernames/xato-net-10-million-usernames.txt
+
+echo "Directories done"
+# import ffuf script 
+
+wget https://raw.githubusercontent.com/im4geeked/Scripts/refs/heads/main/fuzz
+sudo mv fuzz /usr/local/bin/
+sudo chmod +x /usr/local/bin/fuzz
+
+echo "Custom FFuf script done "
+
+# install caido
+cd /home/im4geeked/Downloads
+wget https://caido.download/releases/v0.47.1/caido-desktop-v0.47.1-linux-x86_64.deb
+sudo dpkg -i caido-desktop-v0.47.1-linux-x86_64.deb
+
+echo "caido done"
+# Install rustscan
+
+wget https://github.com/bee-san/RustScan/releases/download/2.4.1/rustscan.deb.zip
+unzip rustscan.deb
+sudo dpkg -i rustscan.deb
+echo "rustscna done "
