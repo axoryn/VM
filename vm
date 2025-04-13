@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-cd /home/im4geeked
+cd /home/axoryn
 mkdir tools
 cd tools/
 mkdir wordlist vpn 
